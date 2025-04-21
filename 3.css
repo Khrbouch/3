@@ -1,0 +1,219 @@
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #e6d8cad0;
+  overflow: hidden;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+  position: relative;
+}
+
+/* Background decorations */
+.decoration {
+  position: absolute;
+  z-index: -1;
+}
+
+/* Balloons */
+.balloon {
+  width: 60px;
+  height: 80px;
+  border-radius: 50%;
+  position: absolute;
+  animation: float 6s infinite ease-in-out;
+}
+
+.balloon:before {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 6px;
+  height: 15px;
+  background: rgba(0,0,0,0.2);
+}
+
+.balloon-string {
+  position: absolute;
+  bottom: -25px;
+  left: 50%;
+  width: 2px;
+  height: 40px;
+  background: rgba(0,0,0,0.2);
+  transform: translateX(-50%);
+}
+
+/* Confetti */
+.confetti {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  opacity: 0;
+  animation: confetti-fall 5s infinite;
+}
+
+/* Happy Birthday Text */
+.birthday-text {
+  position: absolute;
+  top: 10%;
+  left: 50%;
+  transform: translateX(-50%);
+  color: #ff6b6b;
+  font-size: 3rem;
+  font-weight: bold;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+  opacity: 0;
+  animation: fadeIn 1s 0.5s ease-out forwards, bounce 2s 2s infinite;
+  z-index: 20;
+}
+
+.cake-container {
+  position: relative;
+  width: 180px;
+  height: 200px;
+  margin-top: 60px;
+  z-index: 10;
+}
+
+/* CSS Cake */
+.cake {
+  position: absolute;
+  bottom: 20px;
+  width: 180px;
+  height: 80px;
+  background: #f9c5d1;
+  border-radius: 10px 10px 0 0;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Cake layers */
+.cake:before {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: -10px;
+  width: 200px;
+  height: 40px;
+  background: #f2789f;
+  border-radius: 10px 10px 0 0;
+}
+
+/* Icing */
+.cake:after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 20px;
+  background: #fff;
+  border-radius: 50% 50% 0 0;
+}
+
+/* Candle */
+.candle {
+  background: linear-gradient(to bottom, #fff 0%, #ffd700 30%, #ff9900 100%);
+  border-radius: 3px;
+  position: absolute;
+  width: 10px;
+  height: 60px;
+  left: 50%;
+  transform: translateX(-50%) translateY(-300px);
+  backface-visibility: hidden;
+  animation: fall 800ms 1.5s ease-out forwards;
+  z-index: 15;
+}
+
+/* Flame */
+.flame {
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 12px;
+  height: 20px;
+  background: #ffeb3b;
+  border-radius: 50% 50% 20% 20%;
+  box-shadow: 0 0 10px #ff5722, 0 0 20px #ff5722;
+  animation: flicker 0.5s infinite alternate;
+}
+
+/* Plate */
+.plate {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 230px;
+  height: 20px;
+  background: #e0e0e0;
+  border-radius: 30%;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+/* Sprinkles */
+.sprinkles {
+  position: absolute;
+  top: 10px;
+  width: 100%;
+  height: 10px;
+}
+
+.sprinkles:before {
+  content: "• • • • • • •";
+  position: absolute;
+  width: 100%;
+  color: #ff5722;
+  font-size: 20px;
+  letter-spacing: 10px;
+  text-align: center;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  to {
+      opacity: 1;
+      transform: translateX(-50%) translateY(-10px);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(-10px); }
+  50% { transform: translateX(-50%) translateY(-20px); }
+}
+
+@keyframes fall {
+  to {
+      transform: translateX(-50%) translateY(1px);
+  }
+}
+
+@keyframes flicker {
+  0%, 100% {
+      transform: translateX(-50%) scale(1);
+      opacity: 1;
+  }
+  50% {
+      transform: translateX(-50%) scale(0.9, 1.1);
+      opacity: 0.8;
+  }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes confetti-fall {
+  0% {
+      transform: translateY(-100px) rotate(0deg);
+      opacity: 1;
+  }
+  100% {
+      transform: translateY(100vh) rotate(360deg);
+      opacity: 0;
+  }
+}
