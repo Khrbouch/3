@@ -4,7 +4,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #e6d8ca 0%, #f8a5c2 50%, #a5b1c2 100%);
+  background: radial-gradient(circle at top, #e6d8ca 0%, #f8a5c2 50%, #a5b1c2 100%);
   overflow: hidden;
   font-family: 'Comic Sans MS', cursive, sans-serif;
   position: relative;
