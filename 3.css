@@ -4,7 +4,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(circle at top, #e6d8ca 0%, #f8a5c2 50%, #ff9cb5 100%);
+  background: radial-gradient(circle at top, #ffb8df 0% , #ff88a6 100%);
   overflow: hidden;
   font-family: 'Comic Sans MS', cursive, sans-serif;
   position: relative;
@@ -61,7 +61,7 @@ body {
   top: 10%;
   left: 50%;
   transform: translateX(-50%);
-  color: #ff6b6b;
+  color: #ff27db;
   font-size: 3rem;
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
