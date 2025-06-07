@@ -61,7 +61,7 @@ body {
   top: 10%;
   left: 50%;
   transform: translateX(-50%);
-  color: #ff27db;
+  color: #e617b9;
   font-size: 3rem;
   font-weight: bold;
   text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
@@ -70,50 +70,218 @@ body {
   z-index: 20;
 }
 
+/* Update the cake-container to be taller to accommodate two layers */
 .cake-container {
   position: relative;
   width: 180px;
-  height: 200px;
+  height: 240px; /* Increased height */
   margin-top: 60px;
   z-index: 10;
 }
 
-/* CSS Cake */
+/* Updated Cake Layers with Icing on All Tiers */
 .cake {
   position: absolute;
   bottom: 20px;
-  width: 180px;
-  height: 80px;
+  width: 200px;
+  height: 70px;
   background: #f9c5d1;
   border-radius: 10px 10px 0 0;
   box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-/* Cake layers */
-.cake:before {
-  content: "";
+.cake-middle {
   position: absolute;
-  bottom: 100%;
-  left: -10px;
-  width: 200px;
-  height: 40px;
+  bottom: 90px;
+  width: 170px;
+  height: 60px;
   background: #f2789f;
   border-radius: 10px 10px 0 0;
+  z-index: 11;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
-/* Icing */
-.cake:after {
+.cake-top {
+  position: absolute;
+  bottom: 150px;
+  width: 140px;
+  height: 50px;
+  background: #d35685;
+  border-radius: 10px 10px 0 0;
+  z-index: 12;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Base Layer Icing */
+.cake:before {
   content: "";
   position: absolute;
   top: -10px;
   left: 0;
   width: 100%;
   height: 20px;
-  background: #fff;
+  background: #fce4ec;
   border-radius: 50% 50% 0 0;
+  box-shadow: 
+    0 2px 4px rgba(255,255,255,0.8),
+    inset 0 -5px 10px rgba(0,0,0,0.1);
 }
 
-/* Candle */
+.cake:after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10%;
+  width: 80%;
+  height: 15px;
+  background: 
+    radial-gradient(circle at 20% 0%, #fce4ec 15%, transparent 15.5%),
+    radial-gradient(circle at 40% 0%, #fce4ec 15%, transparent 15.5%),
+    radial-gradient(circle at 60% 0%, #fce4ec 15%, transparent 15.5%),
+    radial-gradient(circle at 80% 0%, #fce4ec 15%, transparent 15.5%);
+  background-size: 25% 100%;
+  background-repeat: repeat-x;
+  z-index: 1;
+}
+
+/* Middle Layer Icing */
+.cake-middle:before {
+  content: "";
+  position: absolute;
+  top: -12px;
+  left: 0;
+  width: 100%;
+  height: 22px;
+  background: #f8bbd0;
+  border-radius: 50% 50% 0 0;
+  box-shadow: 
+    0 2px 4px rgba(255,255,255,0.8),
+    inset 0 -5px 10px rgba(0,0,0,0.1);
+}
+
+.cake-middle:after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10%;
+  width: 80%;
+  height: 16px;
+  background: 
+    radial-gradient(circle at 15% 0%, #f8bbd0 15%, transparent 15.5%),
+    radial-gradient(circle at 35% 0%, #f8bbd0 15%, transparent 15.5%),
+    radial-gradient(circle at 65% 0%, #f8bbd0 15%, transparent 15.5%),
+    radial-gradient(circle at 85% 0%, #f8bbd0 15%, transparent 15.5%);
+  background-size: 25% 100%;
+  background-repeat: repeat-x;
+  z-index: 11;
+}
+
+/* Top Layer Icing */
+.cake-top:before {
+  content: "";
+  position: absolute;
+  top: -15px;
+  left: 0;
+  width: 100%;
+  height: 25px;
+  background: #fce4ec;
+  border-radius: 50% 50% 0 0;
+  box-shadow: 
+    0 2px 4px rgba(255,255,255,0.8),
+    inset 0 -5px 10px rgba(0,0,0,0.1);
+}
+
+.cake-top:after {
+  content: "";
+  position: absolute;
+  top: 10px;
+  left: 10%;
+  width: 80%;
+  height: 20px;
+  background: 
+    radial-gradient(circle at 10% 0%, #fce4ec 15%, transparent 15.5%),
+    radial-gradient(circle at 30% 0%, #fce4ec 15%, transparent 15.5%),
+    radial-gradient(circle at 70% 0%, #fce4ec 15%, transparent 15.5%),
+    radial-gradient(circle at 90% 0%, #fce4ec 15%, transparent 15.5%);
+  background-size: 25% 100%;
+  background-repeat: repeat-x;
+  z-index: 13;
+}
+
+/* Drips for All Layers */
+.drip {
+  position: absolute;
+  width: 6px;
+  background: #fce4ec;
+  border-radius: 0 0 4px 4px;
+  z-index: 10;
+  animation: melt 4s infinite ease-in-out;
+}
+
+/* Base Layer Drips */
+.drip-1 { height: 12px; left: 15%; bottom: 70px; animation-delay: 0.2s; }
+.drip-2 { height: 18px; left: 35%; bottom: 64px; animation-delay: 0.4s; }
+.drip-3 { height: 10px; left: 55%; bottom: 72px; animation-delay: 0.1s; }
+.drip-4 { height: 15px; left: 75%; bottom: 67px; animation-delay: 0.3s; }
+
+/* Middle Layer Drips */
+.drip-5 { height: 10px; left: 20%; bottom: 130px; animation-delay: 0.5s; }
+.drip-6 { height: 15px; left: 40%; bottom: 125px; animation-delay: 0.2s; }
+.drip-7 { height: 8px; left: 60%; bottom: 132px; animation-delay: 0.4s; }
+.drip-8 { height: 12px; left: 80%; bottom: 128px; animation-delay: 0.1s; }
+
+/* Top Layer Drips */
+.drip-9 { height: 8px; left: 15%; bottom: 190px; animation-delay: 0.3s; }
+.drip-10 { height: 12px; left: 35%; bottom: 186px; animation-delay: 0.6s; }
+.drip-11 { height: 6px; left: 55%; bottom: 192px; animation-delay: 0.2s; }
+.drip-12 { height: 10px; left: 75%; bottom: 188px; animation-delay: 0.4s; }
+
+/* Shine Effects */
+.shine {
+  position: absolute;
+  background: rgba(255,255,255,0.4);
+  border-radius: 50%;
+  filter: blur(2px);
+  z-index: 14;
+}
+
+/* Base Layer Shine */
+.shine-1 {
+  width: 40px;
+  height: 20px;
+  top: -5px;
+  left: 30%;
+  transform: rotate(20deg);
+}
+
+/* Middle Layer Shine */
+.shine-2 {
+  width: 30px;
+  height: 15px;
+  top: -7px;
+  left: 25%;
+  transform: rotate(15deg);
+}
+
+/* Top Layer Shine */
+.shine-3 {
+  width: 25px;
+  height: 12px;
+  top: -10px;
+  left: 20%;
+  transform: rotate(10deg);
+}
+
+@keyframes melt {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(2px); }
+}
+
+/* Adjust candle position */
 .candle {
   background: linear-gradient(to bottom, #fff 0%, #ffd700 30%, #ff9900 100%);
   border-radius: 3px;
@@ -121,6 +289,7 @@ body {
   width: 10px;
   height: 60px;
   left: 50%;
+  bottom: 195px; /* Align with top layer */
   transform: translateX(-50%) translateY(-300px);
   backface-visibility: hidden;
   animation: fall 800ms 1.5s ease-out forwards;
