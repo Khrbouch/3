@@ -4,46 +4,56 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  background: radial-gradient(circle at top, #ffb8df 0% , #ff88a6 100%);
+  background: radial-gradient(circle at top, #ffb8df 0%, #ff88a6 100%);
   overflow: hidden;
   font-family: 'Comic Sans MS', cursive, sans-serif;
   position: relative;
 }
 
-/* Background decorations */
-.decoration {
-  position: absolute;
-  z-index: -1;
-}
-
-/* Balloons */
+/* Balloons - Enhanced */
 .balloon {
-  width: 60px;
-  height: 80px;
+  width: 80px;
+  height: 100px;
   border-radius: 50%;
   position: absolute;
-  animation: float 6s infinite ease-in-out;
+  animation: float 8s infinite ease-in-out;
+  box-shadow: inset -5px -5px 10px rgba(0,0,0,0.2);
+  z-index: 5;
 }
 
 .balloon:before {
   content: "";
   position: absolute;
-  bottom: -10px;
+  bottom: -12px;
   left: 50%;
   transform: translateX(-50%);
-  width: 6px;
-  height: 15px;
-  background: rgba(0,0,0,0.2);
+  width: 8px;
+  height: 20px;
+  background: rgba(0,0,0,0.1);
+  border-radius: 0 0 5px 5px;
 }
 
 .balloon-string {
   position: absolute;
-  bottom: -25px;
+  bottom: -60px;
   left: 50%;
   width: 2px;
-  height: 40px;
-  background: rgba(0,0,0,0.2);
+  height: 80px;
+  background: linear-gradient(to bottom, transparent, rgba(0,0,0,0.3));
   transform: translateX(-50%);
+  animation: sway 5s infinite ease-in-out;
+}
+
+/* Fireworks */
+.firework {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  box-shadow: 0 0 10px 2px;
+  animation: explode 1s ease-out forwards;
+  opacity: 0;
+  z-index: 20;
 }
 
 /* Confetti */
@@ -70,16 +80,15 @@ body {
   z-index: 20;
 }
 
-/* Update the cake-container to be taller to accommodate two layers */
 .cake-container {
   position: relative;
-  width: 180px;
-  height: 240px; /* Increased height */
+  width: 200px;
+  height: 240px;
   margin-top: 60px;
   z-index: 10;
 }
 
-/* Updated Cake Layers with Icing on All Tiers */
+/* Cake Layers */
 .cake {
   position: absolute;
   bottom: 20px;
@@ -116,129 +125,70 @@ body {
   transform: translateX(-50%);
 }
 
-/* Base Layer Icing */
-.cake:before {
-  content: "";
-  position: absolute;
-  top: -10px;
-  left: 0;
-  width: 100%;
-  height: 20px;
-  background: #fce4ec;
-  border-radius: 50% 50% 0 0;
-  box-shadow: 
-    0 2px 4px rgba(255,255,255,0.8),
-    inset 0 -5px 10px rgba(0,0,0,0.1);
-}
-
-.cake:after {
-  content: "";
-  position: absolute;
-  top: 10px;
-  left: 10%;
-  width: 80%;
-  height: 15px;
-  background: 
-    radial-gradient(circle at 20% 0%, #fce4ec 15%, transparent 15.5%),
-    radial-gradient(circle at 40% 0%, #fce4ec 15%, transparent 15.5%),
-    radial-gradient(circle at 60% 0%, #fce4ec 15%, transparent 15.5%),
-    radial-gradient(circle at 80% 0%, #fce4ec 15%, transparent 15.5%);
-  background-size: 25% 100%;
-  background-repeat: repeat-x;
-  z-index: 1;
-}
-
-/* Middle Layer Icing */
-.cake-middle:before {
-  content: "";
-  position: absolute;
-  top: -12px;
-  left: 0;
-  width: 100%;
-  height: 22px;
-  background: #f8bbd0;
-  border-radius: 50% 50% 0 0;
-  box-shadow: 
-    0 2px 4px rgba(255,255,255,0.8),
-    inset 0 -5px 10px rgba(0,0,0,0.1);
-}
-
-.cake-middle:after {
-  content: "";
-  position: absolute;
-  top: 10px;
-  left: 10%;
-  width: 80%;
-  height: 16px;
-  background: 
-    radial-gradient(circle at 15% 0%, #f8bbd0 15%, transparent 15.5%),
-    radial-gradient(circle at 35% 0%, #f8bbd0 15%, transparent 15.5%),
-    radial-gradient(circle at 65% 0%, #f8bbd0 15%, transparent 15.5%),
-    radial-gradient(circle at 85% 0%, #f8bbd0 15%, transparent 15.5%);
-  background-size: 25% 100%;
-  background-repeat: repeat-x;
-  z-index: 11;
-}
-
-/* Top Layer Icing */
+/* Smooth Icing for All Layers */
+.cake:before,
+.cake-middle:before,
 .cake-top:before {
   content: "";
   position: absolute;
-  top: -15px;
   left: 0;
   width: 100%;
-  height: 25px;
-  background: #fce4ec;
+  background: #fff;
   border-radius: 50% 50% 0 0;
   box-shadow: 
     0 2px 4px rgba(255,255,255,0.8),
     inset 0 -5px 10px rgba(0,0,0,0.1);
 }
 
-.cake-top:after {
-  content: "";
-  position: absolute;
-  top: 10px;
-  left: 10%;
-  width: 80%;
+.cake:before {
+  top: -10px;
   height: 20px;
-  background: 
-    radial-gradient(circle at 10% 0%, #fce4ec 15%, transparent 15.5%),
-    radial-gradient(circle at 30% 0%, #fce4ec 15%, transparent 15.5%),
-    radial-gradient(circle at 70% 0%, #fce4ec 15%, transparent 15.5%),
-    radial-gradient(circle at 90% 0%, #fce4ec 15%, transparent 15.5%);
-  background-size: 25% 100%;
-  background-repeat: repeat-x;
-  z-index: 13;
+  background: #fce4ec;
 }
 
-/* Drips for All Layers */
+.cake-middle:before {
+  top: -12px;
+  height: 22px;
+  background: #f8bbd0;
+}
+
+.cake-top:before {
+  top: -15px;
+  height: 25px;
+  background: #fce4ec;
+}
+
+/* COMPLETELY REMOVED THE DOTS BY REPLACING WITH VISIBLE DRIPS ONLY */
+/* No more :after pseudo-elements causing dots */
+
+/* Realistic Drips - Only visible drips, no background artifacts */
 .drip {
   position: absolute;
   width: 6px;
-  background: #fce4ec;
+  background: currentColor;
   border-radius: 0 0 4px 4px;
   z-index: 10;
   animation: melt 4s infinite ease-in-out;
+  filter: drop-shadow(0 2px 2px rgba(0,0,0,0.1));
 }
 
 /* Base Layer Drips */
-.drip-1 { height: 12px; left: 15%; bottom: 70px; animation-delay: 0.2s; }
-.drip-2 { height: 18px; left: 35%; bottom: 64px; animation-delay: 0.4s; }
-.drip-3 { height: 10px; left: 55%; bottom: 72px; animation-delay: 0.1s; }
-.drip-4 { height: 15px; left: 75%; bottom: 67px; animation-delay: 0.3s; }
+.drip-1 { height: 12px; left: 15%; bottom: 70px; animation-delay: 0.2s; color: #fce4ec; }
+.drip-2 { height: 18px; left: 35%; bottom: 64px; animation-delay: 0.4s; color: #fce4ec; }
+.drip-3 { height: 10px; left: 55%; bottom: 72px; animation-delay: 0.1s; color: #fce4ec; }
+.drip-4 { height: 15px; left: 75%; bottom: 67px; animation-delay: 0.3s; color: #fce4ec; }
 
 /* Middle Layer Drips */
-.drip-5 { height: 10px; left: 20%; bottom: 130px; animation-delay: 0.5s; }
-.drip-6 { height: 15px; left: 40%; bottom: 125px; animation-delay: 0.2s; }
-.drip-7 { height: 8px; left: 60%; bottom: 132px; animation-delay: 0.4s; }
-.drip-8 { height: 12px; left: 80%; bottom: 128px; animation-delay: 0.1s; }
+.drip-5 { height: 10px; left: 20%; bottom: 130px; animation-delay: 0.5s; color: #f8bbd0; }
+.drip-6 { height: 15px; left: 40%; bottom: 125px; animation-delay: 0.2s; color: #f8bbd0; }
+.drip-7 { height: 8px; left: 60%; bottom: 132px; animation-delay: 0.4s; color: #f8bbd0; }
+.drip-8 { height: 12px; left: 80%; bottom: 128px; animation-delay: 0.1s; color: #f8bbd0; }
 
 /* Top Layer Drips */
-.drip-9 { height: 8px; left: 15%; bottom: 190px; animation-delay: 0.3s; }
-.drip-10 { height: 12px; left: 35%; bottom: 186px; animation-delay: 0.6s; }
-.drip-11 { height: 6px; left: 55%; bottom: 192px; animation-delay: 0.2s; }
-.drip-12 { height: 10px; left: 75%; bottom: 188px; animation-delay: 0.4s; }
+.drip-9 { height: 8px; left: 15%; bottom: 190px; animation-delay: 0.3s; color: #fce4ec; }
+.drip-10 { height: 12px; left: 35%; bottom: 186px; animation-delay: 0.6s; color: #fce4ec; }
+.drip-11 { height: 6px; left: 55%; bottom: 192px; animation-delay: 0.2s; color: #fce4ec; }
+.drip-12 { height: 10px; left: 75%; bottom: 188px; animation-delay: 0.4s; color: #fce4ec; }
 
 /* Shine Effects */
 .shine {
@@ -249,7 +199,6 @@ body {
   z-index: 14;
 }
 
-/* Base Layer Shine */
 .shine-1 {
   width: 40px;
   height: 20px;
@@ -258,7 +207,6 @@ body {
   transform: rotate(20deg);
 }
 
-/* Middle Layer Shine */
 .shine-2 {
   width: 30px;
   height: 15px;
@@ -267,7 +215,6 @@ body {
   transform: rotate(15deg);
 }
 
-/* Top Layer Shine */
 .shine-3 {
   width: 25px;
   height: 12px;
@@ -276,12 +223,7 @@ body {
   transform: rotate(10deg);
 }
 
-@keyframes melt {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(2px); }
-}
-
-/* Adjust candle position */
+/* Candle */
 .candle {
   background: linear-gradient(to bottom, #fff 0%, #ffd700 30%, #ff9900 100%);
   border-radius: 3px;
@@ -289,7 +231,7 @@ body {
   width: 10px;
   height: 60px;
   left: 50%;
-  bottom: 195px; /* Align with top layer */
+  bottom: 195px;
   transform: translateX(-50%) translateY(-300px);
   backface-visibility: hidden;
   animation: fall 800ms 1.5s ease-out forwards;
@@ -313,7 +255,7 @@ body {
 /* Plate */
 .plate {
   position: absolute;
-  bottom: 0;
+  bottom: 2px;
   left: 50%;
   transform: translateX(-50%);
   width: 230px;
@@ -344,8 +286,8 @@ body {
 /* Animations */
 @keyframes fadeIn {
   to {
-      opacity: 1;
-      transform: translateX(-50%) translateY(-10px);
+    opacity: 1;
+    transform: translateX(-50%) translateY(-10px);
   }
 }
 
@@ -356,33 +298,60 @@ body {
 
 @keyframes fall {
   to {
-      transform: translateX(-50%) translateY(1px);
+    transform: translateX(-50%) translateY(1px);
   }
 }
 
 @keyframes flicker {
   0%, 100% {
-      transform: translateX(-50%) scale(1);
-      opacity: 1;
+    transform: translateX(-50%) scale(1);
+    opacity: 1;
   }
   50% {
-      transform: translateX(-50%) scale(0.9, 1.1);
-      opacity: 0.8;
+    transform: translateX(-50%) scale(0.9, 1.1);
+    opacity: 0.8;
   }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-20px); }
+  0%, 100% { transform: translateY(0) rotate(-2deg); }
+  25% { transform: translateY(-30px) rotate(2deg); }
+  50% { transform: translateY(-15px) rotate(-3deg); }
+  75% { transform: translateY(-25px) rotate(3deg); }
+}
+
+@keyframes sway {
+  0%, 100% { transform: translateX(-50%) rotate(-5deg); }
+  50% { transform: translateX(-50%) rotate(5deg); }
+}
+
+@keyframes explode {
+  0% { 
+    transform: scale(0.1); 
+    opacity: 0; 
+  }
+  50% { 
+    opacity: 1;
+  }
+  100% { 
+    transform: scale(1.5); 
+    opacity: 0;
+    box-shadow: 0 0 20px 5px;
+  }
 }
 
 @keyframes confetti-fall {
   0% {
-      transform: translateY(-100px) rotate(0deg);
-      opacity: 1;
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 1;
   }
   100% {
-      transform: translateY(100vh) rotate(360deg);
-      opacity: 0;
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
   }
+}
+
+@keyframes melt {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(2px); }
 }
